@@ -1,0 +1,15 @@
+<!DOCTYPE dataset SYSTEM "dataset.dtd">
+<dataset>
+    <table name="inquiry">
+        <column>id</column>
+        <column>name</column>
+        <column>email</column>
+        <column>content</column>
+        <row>
+            <value>1</value>
+            <value>name</value>
+            <value>sample@sample.com</value>
+            <value>aaaaaaaaaaaa</value>
+        </row>
+    </table>
+</dataset>

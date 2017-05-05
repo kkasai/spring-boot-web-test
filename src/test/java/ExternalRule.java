@@ -18,6 +18,7 @@ public class ExternalRule extends ExternalResource {
 
     @Override
     protected void before() throws Throwable {
+        System.out.println("ExternalRule before");
         iDatabaseConnection.getConnection().createStatement().executeUpdate("DELETE FROM " + Application.TABLE_NAME);
         iDatabaseConnection.getConnection().createStatement().executeUpdate("ALTER TABLE " + Application.TABLE_NAME + " AUTO_INCREMENT = 1");
 

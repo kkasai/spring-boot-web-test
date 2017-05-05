@@ -12,7 +12,6 @@ import org.junit.ClassRule;
 import org.junit.rules.TestRule;
 import org.junit.runners.model.Statement;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,8 +19,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Application {
-    static WebDriver driver;
-
     private static String JDBC_URL = "jdbc:mysql://192.168.33.10/sample";
     private static String USER = "myapp";
     private static String PASSWORD = "myapp";
@@ -39,17 +36,12 @@ public class Application {
         private File file;
         @Override
         public void evaluate() throws Throwable {
-            setBrowserDriver();
             dataBackUp();
             statement.evaluate();
-            quitDriver();
             restore();
         }
-        private void setBrowserDriver() throws  Exception {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-            Application.driver = new ChromeDriver();
-        }
         private void dataBackUp() throws Exception {
+            System.out.println("TestRule databackup");
             connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
             iDatabaseConnection = new DatabaseConnection(connection, connection.getSchema());
             iDatabaseConnection.getConfig().setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY, new MySqlDataTypeFactory());
@@ -60,10 +52,8 @@ public class Application {
             file = File.createTempFile("prepare_backup",".xml");
             FlatXmlDataSet.write(partialDataSet, new FileOutputStream(file));
         }
-        private void quitDriver() throws Exception {
-            driver.quit();
-        }
         private void restore() throws Exception {
+            System.out.println("TestRule restore");
             iDatabaseTester.setSetUpOperation(DatabaseOperation.CLEAN_INSERT);
             iDatabaseTester.setDataSet(new FlatXmlDataSetBuilder().build(file));
             DatabaseOperation.CLEAN_INSERT.execute(iDatabaseConnection, new FlatXmlDataSetBuilder().build(file));

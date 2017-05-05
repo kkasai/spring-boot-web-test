@@ -25,12 +25,14 @@ public class InquiryFormTest extends Application {
 
     @Before
     public void setUp() {
-        inquiryFormPage = PageFactory.initElements(driver, InquiryFormPage.class);
+        inquiryFormPage = PageFactory.initElements(testDescription.driver, InquiryFormPage.class);
+        System.out.println("InquiryForm setup");
     }
 
     @Test
     public void inquiryFormTest() throws Exception {
-        driver.get("http://localhost:8080/form");
+        System.out.println("test1");
+        testDescription.driver.get("http://localhost:8080/form");
 
         inquiryFormPage.nameTextBox.sendKeys("name");
         inquiryFormPage.emailTextBox.sendKeys("sample@sample.com");

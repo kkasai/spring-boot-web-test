@@ -27,11 +27,11 @@ public class TestDescription extends TestWatcher {
     protected void starting(Description d) {
         description = d;
 //        System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
-        System.setProperty("webdriver.gecko.driver", "geckodriver");
-        driver = new FirefoxDriver();
+//        System.setProperty("webdriver.gecko.driver", "geckodriver");
+//        driver = new FirefoxDriver();
 //        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-//        System.setProperty("webdriver.chrome.driver", "chromedriver");
-//        driver = new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver", "chromedriver");
+        driver = new ChromeDriver();
         System.out.println("TestDescription starting");
     }
 

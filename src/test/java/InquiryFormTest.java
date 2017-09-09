@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestName;
 import org.openqa.selenium.support.PageFactory;
 import page.InquiryFormPage;
 
@@ -32,7 +33,7 @@ public class InquiryFormTest extends Application {
     @Test
     public void inquiryFormTest() throws Exception {
         System.out.println("test1");
-        testDescription.driver.get("http://localhost:8080/form");
+        testDescription.driver.get("http://192.168.33.10:8080/form");
 
         inquiryFormPage.nameTextBox.sendKeys("name");
         inquiryFormPage.emailTextBox.sendKeys("sample@sample.com");

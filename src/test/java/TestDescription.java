@@ -29,7 +29,6 @@ public class TestDescription extends TestWatcher {
 //        System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
 //        driver = new FirefoxDriver();
 //        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        System.out.println(Paths.get("chromedriver").toAbsolutePath());
         System.setProperty("webdriver.chrome.driver", "chromedriver");
         driver = new ChromeDriver();
         System.out.println("TestDescription starting");
